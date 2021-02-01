@@ -27,6 +27,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    './plugins/mixins/user.js',
+    './plugins/axios.js',
+    './plugins/mixins/validation.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -40,13 +43,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    '@nuxtjs/toast',
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -56,6 +62,50 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        }
+      }
+    }
+  },
+
+  toast: {
+    position: 'top-right',
+    duration : 2000,
+    register: [ // Register custom toasts
+      {
+        name: 'fail_login',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+  },
+
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: "http://familytree/api",
+    credentials: false,
+    proxyHeaders: false
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "login",
+            method: "post",
+            propertyName: "meta.token"
+          },
+          user: {
+            url: "user",
+            method: "get",
+            propertyName: "data"
+          },
+          logout: {
+            url: "logout",
+            method: "post"
+          }
         }
       }
     }
