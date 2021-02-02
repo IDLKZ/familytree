@@ -2,20 +2,21 @@
   <div class="container">
     <vue-tree
       style="width: 1000px; height: 600px; border: 1px solid gray;"
-      :dataset="richMediaData"
+      :dataset="tree"
       :config="treeConfig"
     >
       <template v-slot:node="{ node, collapsed }">
+
         <div
           class="rich-media-node"
           :style="{ border: collapsed ? '2px solid grey' : '' }"
         >
           <img
-            :src="node.avatar"
+            :src="'http://familytree/' + node.img"
             style="width: 48px; height: 48px; border-raduis: 4px;"
           />
           <span style="padding: 4px 0; font-weight: bold;"
-          >{{ node.value }}</span
+          >{{ node.name }}</span
           >
         </div>
       </template>
@@ -86,10 +87,20 @@
             }
           ]
         },
-        treeConfig: { nodeWidth: 120, nodeHeight: 80, levelHeight: 200 }
+        treeConfig: { nodeWidth: 120, nodeHeight: 80, levelHeight: 200 },
+        tree:{},
       }
+    },
+
+    async asyncData({$axios}) {
+      let tree = await $axios.$get("/tree-family");
+      return {tree}
+      // this.$axios.$post("/data",{media: media});
+
+
+
     }
-    }
+  }
 </script>
 
 <style scoped>
