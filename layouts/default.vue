@@ -5,7 +5,7 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-bottom-navigation v-model="value">
+    <v-bottom-navigation v-model="value" dark>
       <v-btn value="recent" link to="/profile">
         <span>Главная</span>
 
@@ -18,10 +18,13 @@
         <v-icon>mdi-account-multiple-plus</v-icon>
       </v-btn>
 
-      <v-btn value="favorites">
-        <span>Favorites</span>
-
-        <v-icon>mdi-heart</v-icon>
+      <v-btn value="favorites" link to="/profile/gallery">
+        <span>Галерея</span>
+        <v-icon>mdi-camera</v-icon>
+      </v-btn>
+      <v-btn value="favorites" link to="/profile/news">
+        <span>Новостной блог</span>
+        <v-icon>mdi-newspaper</v-icon>
       </v-btn>
 
       <v-btn value="nearby">

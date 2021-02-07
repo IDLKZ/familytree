@@ -98,7 +98,6 @@
                 'Content-Type': 'multipart/form-data'
               }
             };
-            console.log(this.form)
             await this.$axios.$post('add-man', formData,config).then(async (e) => {
               this.$toast.success('Публикация успешно создана');
 
