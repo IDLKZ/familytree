@@ -5,7 +5,7 @@
       <v-container fluid class="m-0 p-0">
         <v-row>
           <v-col cols="12" class="custom-parallax">
-            <v-parallax src="bg.png" class="bg-image">
+            <v-parallax src="bg.png" class="bg-image" height="100vh">
               <v-row
                 align="center"
                 justify="center"
@@ -29,7 +29,7 @@
         </v-row>
       </v-container>
     </section>
-    <section class="my-5">
+    <section class="my-5 py-5">
       <v-container>
         <v-row>
           <v-col cols="12" md="12" class="text-center my-5">
@@ -63,7 +63,7 @@
       </v-container>
     </section>
     <hr>
-    <section class="my-5">
+    <section class="my-5 py-5">
       <v-container>
         <v-row>
           <v-col cols="12" md="12" class="text-center my-5">
@@ -145,7 +145,7 @@
       </v-container>
     </section>
     <hr>
-    <section class="my-5">
+    <section class="my-5 py-5">
       <v-container>
         <v-row>
           <v-col cols="12" md="12" class="text-center my-5">
@@ -155,8 +155,8 @@
         </v-row>
         <v-row>
           <carousel-3d>
-            <slide v-for="(slide, i) in members" :index="i" style="background-color: white">
-              <v-col>
+            <slide v-for="(slide, i) in members" :index="i" style="background-color: white" :key="i">
+              <v-col class="px-2">
                 <v-card
                   class="mx-auto text-center"
                   min-height="300"
@@ -182,7 +182,7 @@
       </v-container>
     </section>
     <hr>
-    <section class="my-5">
+    <section class="my-5 py-5">
       <v-container>
         <v-row>
           <v-col cols="12" md="12" class="text-center my-5">
@@ -236,7 +236,7 @@
       </v-container>
     </section>
     <hr>
-    <section class="my-5">
+    <section class="my-5 py-5">
       <v-container>
         <v-row>
           <v-col cols="12" md="12" class="text-center my-5">
@@ -253,6 +253,7 @@
               <v-stepper-step
                 :complete="e6 > 1"
                 step="1"
+                editable
               >
                Перейдите в Контакты
               </v-stepper-step>
@@ -269,14 +270,12 @@
                 >
                   Продолжить
                 </v-btn>
-                <v-btn text @click="e6 = 1">
-                  Отмена
-                </v-btn>
               </v-stepper-content>
 
               <v-stepper-step
                 :complete="e6 > 2"
                 step="2"
+                editable
               >
                 Написать нам
               </v-stepper-step>
@@ -293,14 +292,12 @@
                 >
                   Продолжить
                 </v-btn>
-                <v-btn text @click="e6 = 2">
-                  Отмена
-                </v-btn>
               </v-stepper-content>
 
               <v-stepper-step
                 :complete="e6 > 3"
                 step="3"
+                editable
               >
                 Выберите тип контактов
               </v-stepper-step>
@@ -317,12 +314,9 @@
                 >
                   Продолжить
                 </v-btn>
-                <v-btn text @click="e6 = 3">
-                  Отмена
-                </v-btn>
               </v-stepper-content>
 
-              <v-stepper-step step="4">
+              <v-stepper-step step="4" editable>
                 Что отправить?
               </v-stepper-step>
               <v-stepper-content step="4">
@@ -331,15 +325,7 @@
                   class="mb-12"
                   height="200px"
                 ></v-card>
-                <v-btn
-                  color="primary"
-                  @click="e6 = 1"
-                >
-                  Продолжить
-                </v-btn>
-                <v-btn text @click="e6 = 5">
-                  Отмена
-                </v-btn>
+
               </v-stepper-content>
             </v-stepper>
 
@@ -403,6 +389,7 @@ export default {
               "slidesToShow": 2,
               "slidesToScroll": 2,
               "initialSlide": 2,
+              "dots": true
             }
           },
           {
@@ -410,6 +397,8 @@ export default {
             "settings": {
               "slidesToShow": 1,
               "slidesToScroll": 1,
+              "dots": true
+
             }
           }
         ]
@@ -441,6 +430,7 @@ export default {
 .bg-image{
   height: 100vh!important;
   background-size: cover!important;
+  background-position: center center!important;
 }
 .bg-title{
   font-size: 42px!important;
@@ -452,6 +442,7 @@ export default {
   justify-content: center;
   display: inline-block!important;
 }
+
 
 
 </style>

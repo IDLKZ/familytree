@@ -1,6 +1,6 @@
 <template>
 
-  <v-app>
+  <v-app style="overflow: hidden!important;">
     <Header></Header>
     <v-main>
       <Nuxt/>
