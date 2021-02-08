@@ -10,7 +10,9 @@
     <v-app-bar-nav-icon @click="drawer = !drawer" class="d-sm-none d-block"></v-app-bar-nav-icon>
     <v-toolbar-title style="overflow: visible!important">Family Tree</v-toolbar-title>
     <v-tabs style="display: flex!important; justify-content: center!important; padding-right: 24px">
-      <v-tab v-for="(item,i) in links" :key="i" class="ml-5">{{item.title}}</v-tab>
+      <v-tab v-for="(item,i) in links" :key="i" link :to="item.url" class="ml-5">
+        {{item.title}}
+      </v-tab>
     </v-tabs>
     <v-btn class="rounded transparent border-white-fade-50">
       Оставить заявку
@@ -29,7 +31,7 @@ export default {
       links:[
         {title:"Главная",url:"/"},
         {title:"О нас",url:"/"},
-        {title:"Шежире",url:"/"},
+        {title:"Шежіре",url:"/shejire"},
         {title:"Галерея",url:"/"},
         {title:"Новости",url:"/"},
         {title:"Контакты",url:"/"},
