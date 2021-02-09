@@ -9,7 +9,7 @@
   <v-app-bar app elevation="0" color="green darken-2" dark>
     <v-app-bar-nav-icon @click="drawer = !drawer" class="d-sm-none d-block"></v-app-bar-nav-icon>
     <v-toolbar-title style="overflow: visible!important">Family Tree</v-toolbar-title>
-    <v-tabs style="display: flex!important; justify-content: center!important; padding-right: 24px">
+    <v-tabs class="top-navbar" style="display: flex!important; justify-content: center!important; padding-right: 24px">
       <v-tab v-for="(item,i) in links" :key="i" link :to="item.url" class="ml-5">
         {{item.title}}
       </v-tab>
@@ -30,11 +30,11 @@ export default {
      collapseOnScroll:false,
       links:[
         {title:"Главная",url:"/"},
-        {title:"О нас",url:"/"},
+        {title:"О нас",url:"/about"},
         {title:"Шежіре",url:"/shejire"},
-        {title:"Галерея",url:"/"},
-        {title:"Новости",url:"/"},
-        {title:"Контакты",url:"/"},
+        {title:"Галерея",url:"/gallery"},
+        {title:"Новости",url:"/news"},
+        {title:"Контакты",url:"/contact"},
       ]
     }
   },
@@ -48,5 +48,10 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 900px){
+  .top-navbar{
+    display: none!important;
+  }
+}
 
 </style>

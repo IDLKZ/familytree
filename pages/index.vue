@@ -193,7 +193,7 @@
         <v-row>
           <v-col cols="12" class="text-center my-2">
           <VueSlickCarousel class="my-sm-2" :arrows="true" :dots="true" v-bind="settings">
-            <div  class="pa-md-10 pa-sm-5" v-for="(item) in 9" :key="item">
+            <div  class="pa-md-10 pa-sm-5" v-for="(item,index) in news" :key="index">
               <v-card
                 class="mx-auto"
                 max-width="400"
@@ -202,19 +202,18 @@
                 <v-img
                   class="white--text"
                   height="200px"
-                  src="https://99px.ru/sstorage/53/2019/01/tmb_250435_871621.jpg"
+                  :src="$store.state.image.image + item.img"
                 >
 
                 </v-img>
-                <v-card-title class="my-5">Lorem Ipsum</v-card-title>
+                <v-card-title class="my-5">{{item.title}}</v-card-title>
                 <v-card-subtitle class="pb-0 text-left mt-2 mb-2">
-                  14.11.2020
+                  {{new Date(item.created_at).toString("dd-mm-yyyy")}}
                 </v-card-subtitle>
 
                 <v-card-text class="text--primary text-left">
                   <div>
-                    Could you provide a CodePen or JsFiddle please ? – Toodoo Apr 8 '19 at 13:29
-                    @Toodoo Sure, give me a second – Issaki Apr 8 '19 at 13:30
+                    {{item.content.length > 120 ? item.content.substr(0,120) + '....' : item.content}}
                   </div>
                 </v-card-text>
 
@@ -222,7 +221,7 @@
                   <v-btn
                     color="gray"
                     text
-                    :to = "'/stories/' + 1"
+                    :to = "'/stories/' + item.id"
                   >
                     Читать <v-icon>mdi-chevron-right</v-icon>
                   </v-btn>
@@ -416,7 +415,8 @@ export default {
   },
   async asyncData({$axios}){
     let members = await $axios.$get("/member");
-    return {members}
+    let news = await $axios.$get("/data");
+    return {members,news}
   }
 
 }
