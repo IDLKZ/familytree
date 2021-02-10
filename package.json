@@ -9,12 +9,15 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@balkangraph/orgchart.js": "^7.7.17",
     "@blowstack/ckeditor-nuxt": "^0.5.1",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/toast": "^3.3.1",
     "@ssthouse/vue-tree-chart": "^0.4.0",
     "core-js": "^3.8.3",
+    "less": "3.9.0",
+    "less-loader": "^4.0.5",
     "nuxt": "^2.14.12",
     "vue-carousel-3d": "^1.0.1",
     "vue-gallery-slideshow": "^1.5.2",

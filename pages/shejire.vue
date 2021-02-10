@@ -1,48 +1,54 @@
 <template>
   <v-container>
-    <vue-tree
-      style="width: 100%; height: 500px; border: 1px solid gray;"
-      :dataset="tree"
-      :config="treeConfig"
-      linkStyle="straight"
-    >
-      <template v-slot:node="{ node, collapsed }">
-
-        <div
-          class="rich-media-node"
-          :style="{ border: collapsed ? '2px solid grey' : '' }"
-        >
-          <img
-            :src="'http://familytree/' + node.img"
-            style="width: 48px; height: 48px; border-radius: 4px;"
-          />
-          <span style="padding: 4px 0; font-weight: bold;"
-          >{{ node.name }}</span
-          >
-        </div>
-      </template>
-    </vue-tree>
+    <div id="tree" ref="tree"></div>
   </v-container>
 </template>
 
 <script>
-  import VueTree from '@ssthouse/vue-tree-chart';
+  import OrgChart from '@balkangraph/orgchart.js'
     export default {
       layout: 'layout',
         name: "shejire",
-      components:{
-        VueTree
-      },
       data() {
         return {
-          treeConfig: { nodeWidth: 140, nodeHeight: 80, levelHeight: 200, zoom: true },
-          tree:{},
+          nodes: [
+
+          ]
         }
       },
+      methods: {
+        oc: function(domEl, x) {
+          this.chart = new OrgChart(domEl, {
+            nodes: x,
+            nodeBinding: {
+              field_0: "name",
+              field_1: "title",
+              img_0: "img"
+            },
+            template: "derek",
+            menu: {
+              pdf: { text: "Export PDF" },
+              png: { text: "Export PNG" },
+            },
+            nodeMenu: {
+              pdf: { text: "Export PDF" },
+              png: { text: "Export PNG" },
+            },
+          });
+        },
 
+      },
+
+      mounted(){
+        this.oc(this.$refs.tree, this.nodes)
+      },
+      created() {
+        console.log(this.nodes)
+      },
       async asyncData({$axios}) {
-        let tree = await $axios.$get("/tree-family");
-        return {tree}
+        await $axios.$get("/tree-family").then(({data}) => (
+            this.nodes = data.data
+        ));
         // this.$axios.$post("/data",{media: media});
       }
     }
