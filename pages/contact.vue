@@ -19,8 +19,50 @@
     </v-row>
   </v-container>
   <v-container>
-    <v-row>
-      <v-col cols="12" md="6">
+    <v-row class="my-5 py-5">
+      <v-col cols="12" md="6" class="px-5">
+        <div class="text-h3 mb-5 pb-5">
+          Напишите нам
+        </div>
+          <v-form>
+            <v-text-field
+              outlined
+              required
+              prepend-icon="mdi-account-circle"
+              label="Ваше ФИО"
+            ></v-text-field>
+            <v-text-field
+              outlined
+              required
+              prepend-icon="mdi-phone"
+              label="Номер телефона"
+            ></v-text-field>
+            <v-text-field
+              type="email"
+              outlined
+              required
+              label="Ваша почта"
+              prepend-icon="mdi-email"
+            ></v-text-field>
+            <v-textarea
+            outlined
+            prepend-icon="mdi-message"
+            label="Ваше сообщение"
+            >
+            </v-textarea>
+            <div class="text-right">
+              <v-btn
+                depressed
+                color="primary"
+              >
+                Отправить
+              </v-btn>
+
+            </div>
+
+
+          </v-form>
+
 
       </v-col>
       <v-col cols="12" md="6">

@@ -20,9 +20,7 @@
   <v-container fluid>
     <v-row class="my-5 py-5">
       <v-col cols="12" md="6" >
-        <v-img src="/aboutus.png">
-          <div class="fill-height bottom-gradient"></div>
-        </v-img>
+       <lottie :options="lottieOptions.family" v-on:animCreated="handleAnimation"></lottie>
       </v-col>
       <v-col cols="12" md="6">
         <div class="text-h4 mb-5">Немного о нас</div>
@@ -36,9 +34,14 @@
 </template>
 
 <script>
+import lottie from "vue-lottie/src/lottie.vue";
+import  * as family from "/static/animation/family.json";
 export default {
 name: "about",
   layout:"layout",
+  components:{
+  lottie
+  },
   data: () => ({
     items: [
       {
@@ -52,9 +55,16 @@ name: "about",
         href: '/about',
         to: '/about',
       },
-
     ],
+    lottieOptions:{
+      family:{animationData:family.default}
+    }
   }),
+  methods: {
+    handleAnimation: function (anim) {
+      this.anim = anim;
+    }
+  },
 }
 </script>
 

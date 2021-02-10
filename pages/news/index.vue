@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <v-container fluid>
       <v-row>
         <v-col cols="12" style="padding: 0!important;">
@@ -18,6 +19,14 @@
       </v-row>
     </v-container>
     <v-container class="my-5 py-5" v-if="news.length">
+      <v-row>
+        <v-col cols="12">
+          <div class="text-h4">
+            Новости
+          </div>
+        </v-col>
+
+      </v-row>
       <v-row>
         <v-col cols="12" md="4" v-for="(image, i) in news" :key="i">
           <v-card

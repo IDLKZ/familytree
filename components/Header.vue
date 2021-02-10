@@ -7,15 +7,30 @@
   </v-navigation-drawer>
 
   <v-app-bar app elevation="0" color="green darken-2" dark>
-    <v-app-bar-nav-icon @click="drawer = !drawer" class="d-sm-none d-block"></v-app-bar-nav-icon>
-    <v-toolbar-title style="overflow: visible!important">Family Tree</v-toolbar-title>
-    <v-tabs class="top-navbar" style="display: flex!important; justify-content: center!important; padding-right: 24px">
-      <v-tab v-for="(item,i) in links" :key="i" link :to="item.url" class="ml-5">
-        {{item.title}}
-      </v-tab>
-    </v-tabs>
-    <v-btn class="rounded transparent border-white-fade-50">
+    <v-toolbar-title style="overflow: visible!important; padding-left: 20px">Family Tree</v-toolbar-title>
+      <v-tabs class="top-navbar" style="justify-content: center!important; padding-right: 24px">
+        <v-tab v-for="(item,i) in links" :key="i" link :to="item.url" class="ml-5">
+          {{item.title}}
+        </v-tab>
+      </v-tabs>
+
+    <v-btn
+      rounded
+      dark
+      outlined
+      link
+      class=" border-white-fade-50 top-button">
+      <v-icon class="pr-2">mdi-email</v-icon>
       Оставить заявку
+    </v-btn>
+    <v-btn
+      rounded
+      dark
+      outlined
+      @click="drawer = !drawer"
+      class="drawer-button"
+      >
+      <v-icon> mdi-format-list-bulleted-square </v-icon>
     </v-btn>
   </v-app-bar>
   </div>
@@ -52,6 +67,22 @@ export default {
   .top-navbar{
     display: none!important;
   }
+  .top-button{
+    display: none;
+  }
+  .drawer-button{
+    display: none;
+  }
 }
-
+@media screen and (min-width: 900px){
+  .top-navbar{
+    display: flex!important;
+  }
+  .top-button{
+    display: block;
+  }
+  .drawer-button{
+    display: block;
+  }
+}
 </style>

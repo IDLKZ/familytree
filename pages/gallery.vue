@@ -20,6 +20,14 @@
   </v-container>
     <v-container class="my-5 py-5" v-if="images.length">
       <v-row>
+        <v-col cols="12">
+          <div class="text-h4">
+            Галерея фотографий
+          </div>
+        </v-col>
+
+      </v-row>
+      <v-row>
         <v-col cols="12" md="4" v-for="(image, i) in images" :key="i">
           <v-card
             class="mx-auto"

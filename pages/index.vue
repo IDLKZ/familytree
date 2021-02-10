@@ -73,31 +73,7 @@
         </v-row>
         <v-row>
           <v-col cols="12" md="6">
-            <v-carousel
-              cycle
-              height="350"
-              hide-delimiter-background
-              show-arrows-on-hover
-            >
-              <v-carousel-item
-                v-for="(slide, i) in about"
-                :key="i"
-              >
-                <v-sheet
-                  height="100%"
-                >
-                  <v-row
-                    class="fill-height"
-                    align="center"
-                    justify="center"
-                  >
-                    <div class="display-3">
-                      <img width="100%" height="350" :src="slide.img">
-                    </div>
-                  </v-row>
-                </v-sheet>
-              </v-carousel-item>
-            </v-carousel>
+            <lottie :options="lottieOptions.social" v-on:animCreated="handleAnimation" />
           </v-col>
           <v-col cols="12" md="6">
             <v-card
@@ -106,6 +82,7 @@
               <v-toolbar
                 dark
                 flat
+                color="green darken-2"
               >
                   <v-app-bar-title>Немного о Нас</v-app-bar-title>
                 <template v-slot:extension>
@@ -221,7 +198,7 @@
                   <v-btn
                     color="gray"
                     text
-                    :to = "'/stories/' + item.id"
+                    :to = "'/news/' + item.id"
                   >
                     Читать <v-icon>mdi-chevron-right</v-icon>
                   </v-btn>
@@ -343,19 +320,15 @@ import VueSlickCarousel from 'vue-slick-carousel';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import { Carousel3d, Slide } from 'vue-carousel-3d';
-
+import lottie from 'vue-lottie/src/lottie.vue';
+import * as social from "static/animation/social.json";
 export default {
   layout:"layout",
   components:{
-    VueSlickCarousel,Carousel3d,Slide
+    VueSlickCarousel,Carousel3d,Slide,lottie
   },
   data(){
     return{
-      about:[
-        {img:"/about1.png"},
-        {img:"/about2.png"},
-        {img:"/about3.png"},
-      ],
       e6: 1,
       items: [
         {title:"Кто мы",text:"1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedLorem ipsum dolor sit amet, consectetur adipiscing elit, sedLorem ipsum dolor sit amet, consectetur adipiscing elit, sedLorem ipsum dolor sit amet, consectetur adipiscing elit, sed"},
@@ -363,6 +336,9 @@ export default {
         {title:"Что такое Шежире",text:"3Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedLorem ipsum dolor sit amet, consectetur adipiscing elit, sedLorem ipsum dolor sit amet, consectetur adipiscing elit, sedLorem ipsum dolor sit amet, consectetur adipiscing elit, sed"},
       ],
       tab:null,
+      lottieOptions: {
+        social: { animationData: social.default },
+      },
       settings:{
         "dots": true,
         "infinite": false,
@@ -402,6 +378,11 @@ export default {
           }
         ]
       }
+    }
+  },
+  methods: {
+    handleAnimation: function (anim) {
+      this.anim = anim;
     }
   },
   computed:{
