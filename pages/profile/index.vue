@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <div style="display: flex;">
-      <v-btn @click="controlScale('bigger')">+</v-btn>
-      <v-btn @click="controlScale('smaller')">-</v-btn>
-      <v-btn @click="controlScale('restore')">1:1</v-btn>
-    </div>
+<!--    <div style="display: flex;">-->
+<!--      <v-btn @click="controlScale('bigger')">+</v-btn>-->
+<!--      <v-btn @click="controlScale('smaller')">-</v-btn>-->
+<!--      <v-btn @click="controlScale('restore')">1:1</v-btn>-->
+<!--    </div>-->
     <vue-tree
       ref="scaleTree"
       style="width: 100%; height: 500px; border: 1px solid gray;"
@@ -49,7 +49,7 @@
         let self = this;
         switch (command) {
           case 'bigger':
-            this.$refs.scaleTree.d3.zoom(2)
+            this.$refs.scaleTree.zoomIn()
             break
           case 'smaller':
             this.$refs.scaleTree.zoomOut()
@@ -64,7 +64,7 @@
       console.log(this.$refs.scaleTree);
     },
     async asyncData({$axios}) {
-      let tree = await $axios.$get("/tree-family");
+      let tree = await $axios.$get("/tree-family2");
       return {tree}
       // this.$axios.$post("/data",{media: media});
     }
