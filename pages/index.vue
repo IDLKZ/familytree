@@ -1,9 +1,10 @@
 <template>
   <div>
-
     <section>
       <v-container fluid class="m-0 p-0">
+
         <v-row>
+
           <v-col cols="12" class="custom-parallax">
             <v-parallax src="bg.png" class="bg-image" height="100vh">
               <v-row

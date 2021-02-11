@@ -25,7 +25,7 @@
               field_1: "title",
               img_0: "img"
             },
-            template: "derek",
+            template: "luba",
             menu: {
               pdf: { text: "Export PDF" },
               png: { text: "Export PNG" },
@@ -46,9 +46,8 @@
         console.log(this.nodes)
       },
       async asyncData({$axios}) {
-        await $axios.$get("/tree-family").then(({data}) => (
-            this.nodes = data.data
-        ));
+        const nodes = await $axios.$get("/tree-family")
+        return {nodes}
         // this.$axios.$post("/data",{media: media});
       }
     }

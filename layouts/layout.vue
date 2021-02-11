@@ -23,6 +23,8 @@ name: "layout.vue",
 }
 </script>
 
-<style scoped>
-
+<style>
+body{
+  font-family: Roboto;
+}
 </style>
