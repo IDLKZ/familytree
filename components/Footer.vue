@@ -10,8 +10,8 @@
     >
         <v-col cols="12" class="text-center py-2">
           <v-btn
-            v-for="icon in icons"
-            :key="icon"
+            v-for="(icon,item) in icons"
+            :key="item"
             class="mx-4 white--text"
             icon
           >
@@ -23,8 +23,8 @@
 
 
       <v-btn
-        v-for="link in links"
-        :key="link"
+        v-for="(link,item) in links"
+        :key="item"
         color="white"
         text
         rounded

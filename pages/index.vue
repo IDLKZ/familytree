@@ -96,8 +96,8 @@
                     <v-tabs-slider color="yellow"></v-tabs-slider>
 
                     <v-tab
-                      v-for="item in items"
-                      :key="item"
+                      v-for="(item,index) in items"
+                      :key="index"
                     >
                       {{ item.title }}
                     </v-tab>
@@ -107,8 +107,8 @@
 
               <v-tabs-items v-model="tab">
                 <v-tab-item
-                  v-for="item in items"
-                  :key="item"
+                  v-for="(item,index) in items"
+                  :key="index"
                 >
                   <v-card flat>
                     <v-card-text v-text="item.text"></v-card-text>

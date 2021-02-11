@@ -3,12 +3,8 @@
   <v-navigation-drawer
   temporary v-model="drawer" absolute>
     <v-card height="350px">
-      <v-navigation-drawer
-        absolute
-        permanent
-        right
-      >
-        <template v-slot:prepend>
+
+        <template>
           <v-list-item two-line>
             <v-list-item-avatar>
               <img src="/logo.png">
@@ -38,7 +34,6 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-      </v-navigation-drawer>
     </v-card>
 
   </v-navigation-drawer>
