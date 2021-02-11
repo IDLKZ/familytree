@@ -9,20 +9,12 @@
     export default {
       layout: 'layout',
         name: "shejire",
-      data() {
-        return {
-          nodes: [
-
-          ]
-        }
-      },
       methods: {
         oc: function(domEl, x) {
           this.chart = new OrgChart(domEl, {
             nodes: x,
             nodeBinding: {
               field_0: "name",
-              field_1: "title",
               img_0: "img"
             },
             template: "luba",
@@ -41,9 +33,6 @@
 
       mounted(){
         this.oc(this.$refs.tree, this.nodes)
-      },
-      created() {
-        console.log(this.nodes)
       },
       async asyncData({$axios}) {
         const nodes = await $axios.$get("/tree-family")
