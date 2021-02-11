@@ -59,6 +59,7 @@
       dark
       outlined
       link
+      to="/contact"
       class=" border-white-fade-50 top-button">
       <v-icon class="pr-2">mdi-email</v-icon>
       Оставить заявку
@@ -123,7 +124,7 @@ export default {
     display: flex!important;
   }
   .top-button{
-    display: block;
+    display: flex;
   }
   .drawer-button{
     display: none;
