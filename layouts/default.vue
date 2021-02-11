@@ -27,7 +27,7 @@
         <v-icon>mdi-newspaper</v-icon>
       </v-btn>
 
-      <v-btn value="nearby">
+      <v-btn value="nearby" @click="logout">
         <span>Выход</span>
 
         <v-icon>mdi-logout-variant</v-icon>
@@ -38,9 +38,15 @@
 
 <script>
 export default {
+  middleware: 'auth',
   data () {
     return {
       value: 'recent'
+    }
+  },
+  methods: {
+    logout() {
+      this.$auth.logout()
     }
   }
 }
