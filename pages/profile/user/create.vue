@@ -99,8 +99,8 @@
               }
             };
             await this.$axios.$post('add-man', formData,config).then(async (e) => {
-              this.$toast.success('Публикация успешно создана');
-
+              this.$toast.success('Публикация успешно создана')
+              this.$nuxt.$router.replace({ path: '/profile'})
             }).catch(error => {
               this.errors = error.response.data
             })

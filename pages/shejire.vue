@@ -17,7 +17,7 @@
               field_0: "name",
               img_0: "img"
             },
-            template: "luba",
+            template: "derek",
             menu: {
               pdf: { text: "Export PDF" },
               png: { text: "Export PNG" },

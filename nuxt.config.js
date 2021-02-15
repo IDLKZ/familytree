@@ -86,7 +86,7 @@ export default {
 
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://familytree/api",
+    baseURL: "https://backend.qangli.kz/api",
     credentials: false,
     proxyHeaders: false
   },

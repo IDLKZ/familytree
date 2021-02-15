@@ -12,6 +12,12 @@
         <v-icon>mdi-view-dashboard</v-icon>
       </v-btn>
 
+      <v-btn value="recent" link to="/profile/list">
+        <span>Список пользователей</span>
+
+        <v-icon>mdi-view-dashboard</v-icon>
+      </v-btn>
+
       <v-btn value="recent" link to="/profile/user/create">
         <span>Добавить пользователя</span>
 
